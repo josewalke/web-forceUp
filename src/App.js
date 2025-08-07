@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import { useLanguage } from './context/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
