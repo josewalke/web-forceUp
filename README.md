@@ -1,70 +1,163 @@
-# Getting Started with Create React App
+# AutoConsult Pro - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sitio web profesional para AutoConsult Pro, especialistas en consultoría automotriz.
 
-## Available Scripts
+## 🚀 Características
 
-In the project directory, you can run:
+- **Diseño Moderno**: Interfaz elegante con colores negro, blanco y naranja
+- **Responsive**: Optimizado para dispositivos móviles y desktop
+- **Multilingüe**: Soporte para español e inglés
+- **Formulario de Contacto**: Sistema de contacto funcional
+- **Animaciones**: Efectos visuales suaves y profesionales
+- **SEO Optimizado**: Meta tags y estructura semántica
 
-### `npm start`
+## 🎨 Paleta de Colores
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Negro**: `#000000` - Fondos y texto principal
+- **Blanco**: `#ffffff` - Fondos de tarjetas y texto secundario
+- **Naranja**: `#f97316` - Acentos, botones y elementos interactivos
+- **Naranja Oscuro**: `#ea580c` - Hover states y elementos destacados
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologías Utilizadas
 
-### `npm test`
+- **React 18** - Framework principal
+- **CSS3** - Estilos y animaciones
+- **JavaScript ES6+** - Lógica de la aplicación
+- **React Icons** - Iconografía
+- **Context API** - Gestión de estado y idiomas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📁 Estructura del Proyecto
 
-### `npm run build`
+```
+mi-app-react/
+├── public/
+│   ├── index.html
+│   ├── logo.jpg
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── Header.js
+│   │   ├── Hero.js
+│   │   ├── Services.js
+│   │   ├── AdditionalInfo.js
+│   │   ├── Contact.js
+│   │   ├── Footer.js
+│   │   └── ...
+│   ├── context/
+│   │   └── LanguageContext.js
+│   ├── locales/
+│   │   ├── es.js
+│   │   └── en.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── package.json
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Instalación y Uso
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerrequisitos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (versión 14 o superior)
+- npm o yarn
 
-### `npm run eject`
+### Instalación
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/josewalke/web-forceUp.git
+   cd web-forceUp
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Ejecutar en modo desarrollo**
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Abrir en el navegador**
+   ```
+   http://localhost:3000
+   ```
 
-## Learn More
+### Scripts Disponibles
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `npm start` - Ejecuta la aplicación en modo desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm test` - Ejecuta las pruebas
+- `npm run eject` - Expone la configuración de webpack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📱 Secciones del Sitio
 
-### Code Splitting
+### 1. Header
+- Navegación principal
+- Selector de idioma (ES/EN)
+- Logo de la empresa
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2. Hero Section
+- Título principal y descripción
+- Call-to-action principal
+- Diseño impactante
 
-### Analyzing the Bundle Size
+### 3. Servicios
+- Boosters de Ventas
+- Formación de Equipos
+- After Sales Factory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 4. Información Adicional
+- ¿Por qué elegirnos?
+- Nuestro proceso
+- Diseño con colores negro, blanco y naranja
 
-### Making a Progressive Web App
+### 5. Contacto
+- Formulario de contacto
+- Información de la empresa
+- Validación de campos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 6. Footer
+- Información de copyright
+- Enlaces adicionales
 
-### Advanced Configuration
+## 🌐 Multilingüe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+El sitio soporta dos idiomas:
+- **Español** (por defecto)
+- **Inglés**
 
-### Deployment
+Los archivos de traducción se encuentran en `src/locales/`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🎯 Características Técnicas
 
-### `npm run build` fails to minify
+- **Performance**: Optimizado para velocidad de carga
+- **Accesibilidad**: Cumple estándares WCAG
+- **SEO**: Meta tags y estructura semántica
+- **Responsive**: Diseño adaptativo
+- **Animaciones**: CSS animations y transitions
+- **Formularios**: Validación y manejo de estado
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👥 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📞 Contacto
+
+- **Email**: info@autoconsultpro.com
+- **Teléfono**: +34 600 000 000
+- **Sitio Web**: [AutoConsult Pro](https://autoconsultpro.com)
+
+---
+
+Desarrollado con ❤️ por el equipo de AutoConsult Pro
