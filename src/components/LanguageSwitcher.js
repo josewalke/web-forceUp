@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { availableLanguages } from '../locales';
 import { FiGlobe, FiChevronDown } from 'react-icons/fi';
@@ -8,7 +8,7 @@ const LanguageSwitcher = React.memo(() => {
   const [isOpen, setIsOpen] = useState(false);
 
   const currentLang = useMemo(() => 
-    availableLanguages.find(lang => lang.code === currentLanguage), 
+    availableLanguages.find(lang => lang.code === currentLanguage) || availableLanguages[0], 
     [currentLanguage]
   );
 
@@ -17,7 +17,8 @@ const LanguageSwitcher = React.memo(() => {
     setIsOpen(false);
   }, [changeLanguage]);
 
-  const toggleDropdown = useCallback(() => {
+  const toggleDropdown = useCallback((e) => {
+    e.stopPropagation();
     setIsOpen(prev => !prev);
   }, []);
 
@@ -25,12 +26,36 @@ const LanguageSwitcher = React.memo(() => {
     setIsOpen(false);
   }, []);
 
+  // Cerrar dropdown cuando se hace clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && !event.target.closest('.language-switcher')) {
+        closeDropdown();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isOpen, closeDropdown]);
+
   const languageOptions = useMemo(() => 
     availableLanguages.map(lang => (
       <div
         key={lang.code}
         className={`language-option ${lang.code === currentLanguage ? 'active' : ''}`}
         onClick={() => handleLanguageChange(lang.code)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem',
+          padding: '0.75rem 1rem',
+          cursor: 'pointer',
+          color: '#ffffff',
+          backgroundColor: '#000000',
+          borderBottom: '1px solid rgba(249, 115, 22, 0.3)'
+        }}
       >
         <span className="language-flag">
           {lang.code === 'es' ? '🇪🇸' : '🇺🇸'}
@@ -44,17 +69,31 @@ const LanguageSwitcher = React.memo(() => {
     <div className="language-switcher">
       <div className="language-selector" onClick={toggleDropdown}>
         <FiGlobe className="language-icon" />
-        <span className="language-text">{currentLang?.name}</span>
+        <span className="language-text">{currentLang?.name || 'Español'}</span>
         <FiChevronDown className={`chevron-icon ${isOpen ? 'rotated' : ''}`} />
       </div>
       
       {isOpen && (
-        <>
-          <div className="language-dropdown">
-            {languageOptions}
-          </div>
-          <div className="dropdown-overlay" onClick={closeDropdown} />
-        </>
+        <div 
+          className="language-dropdown" 
+          style={{ 
+            position: 'absolute',
+            top: 'calc(100% + 5px)',
+            left: '0',
+            right: '0',
+            backgroundColor: '#000000',
+            border: '2px solid #f97316',
+            borderRadius: '12px',
+            boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)',
+            zIndex: 1005,
+            minWidth: '140px',
+            display: 'block',
+            visibility: 'visible',
+            opacity: 1
+          }}
+        >
+          {languageOptions}
+        </div>
       )}
     </div>
   );

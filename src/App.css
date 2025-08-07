@@ -9,6 +9,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #000000;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .container {
@@ -63,7 +65,7 @@ body {
   z-index: 1000;
   animation: slideInFromTop 0.6s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .header::before {
@@ -138,6 +140,7 @@ body {
   position: relative;
   margin-left: 1rem;
   animation: fadeInUp 0.6s ease 0.2s both;
+  z-index: 1002;
 }
 
 .language-selector {
@@ -152,7 +155,7 @@ body {
   transition: all 0.3s ease;
   min-width: 140px;
   position: relative;
-  z-index: 1001;
+  z-index: 1003;
 }
 
 .language-selector:hover {
@@ -189,17 +192,25 @@ body {
 /* Dropdown optimizado */
 .language-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 5px);
   left: 0;
   right: 0;
-  background: #000000;
+  background-color: #000000 !important;
+  background: #000000 !important;
   border: 2px solid #f97316;
-  border-top: none;
-  border-radius: 0 0 12px 12px;
+  border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  z-index: 1000;
+  z-index: 1005;
   animation: dropdownSlide 0.2s ease;
+  min-width: 140px;
+  isolation: isolate;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
 }
 
 .language-option {
@@ -209,10 +220,12 @@ body {
   padding: 0.75rem 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  border-bottom: 1px solid #f97316;
+  border-bottom: 1px solid rgba(249, 115, 22, 0.3);
   position: relative;
   overflow: hidden;
   color: #ffffff;
+  background-color: #000000;
+  background: #000000;
 }
 
 .language-option::before {
@@ -235,13 +248,15 @@ body {
 }
 
 .language-option:hover {
-  background: #f97316;
-  color: #ffffff;
+  background-color: rgba(249, 115, 22, 0.1) !important;
+  background: rgba(249, 115, 22, 0.1) !important;
+  color: #f97316;
   transform: translateX(5px);
 }
 
 .language-option.active {
-  background: #000000;
+  background-color: rgba(249, 115, 22, 0.2) !important;
+  background: rgba(249, 115, 22, 0.2) !important;
   color: #f97316;
   font-weight: 600;
 }
@@ -255,7 +270,7 @@ body {
 .language-name {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #ffffff;
+  color: inherit;
 }
 
 .dropdown-overlay {
@@ -264,7 +279,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 1001;
+  background: transparent;
+  pointer-events: auto;
 }
 
 /* Hero Section optimizado */
@@ -474,13 +491,13 @@ body {
 }
 
 .info-card {
-  background: #ffffff;
+  background: #000000;
   padding: 2.5rem;
   border-radius: 20px;
   border: 3px solid #f97316;
   transition: all 0.4s ease;
   animation: fadeInUp 0.6s ease both;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -511,15 +528,15 @@ body {
 
 .info-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 15px 40px rgba(249, 115, 22, 0.5);
   border-color: #ea580c;
-  background: #fafafa;
+  background: #111111;
 }
 
 .info-card h3 {
   font-size: 1.8rem;
   margin-bottom: 2rem;
-  color: #000000;
+  color: #ffffff;
   transition: color 0.3s ease;
   font-weight: 800;
   text-transform: uppercase;
@@ -554,13 +571,13 @@ body {
 
 .info-card li {
   padding: 1rem 0;
-  color: #000000;
+  color: #ffffff;
   position: relative;
   padding-left: 2rem;
   transition: all 0.3s ease;
   font-weight: 500;
   font-size: 1.1rem;
-  border-bottom: 1px solid rgba(249, 115, 22, 0.1);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.3);
 }
 
 .info-card li:last-child {
@@ -570,7 +587,7 @@ body {
 .info-card li:hover {
   transform: translateX(10px);
   color: #f97316;
-  background: rgba(249, 115, 22, 0.05);
+  background: rgba(249, 115, 22, 0.1);
   padding-left: 2.5rem;
   border-radius: 8px;
   margin: 0 -1rem;
@@ -615,9 +632,9 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: #ffffff;
+  background: #000000;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
   transition: all 0.3s ease;
   animation: fadeInUp 0.4s ease both;
   border: 2px solid #f97316;
@@ -630,9 +647,9 @@ body {
 
 .step:hover {
   transform: translateX(10px);
-  box-shadow: 0 6px 25px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
   border-color: #ea580c;
-  background: #fafafa;
+  background: #111111;
 }
 
 .step-number {
@@ -659,7 +676,7 @@ body {
 }
 
 .step span:last-child {
-  color: #000000;
+  color: #ffffff;
   font-weight: 600;
   transition: color 0.3s ease;
   font-size: 1rem;
@@ -672,7 +689,7 @@ body {
 /* Contact Section optimizado */
 .contact {
   padding: 80px 0;
-  background: #ffffff;
+  background: #000000;
 }
 
 .contact-content {
@@ -689,12 +706,12 @@ body {
 .contact-info h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #000000;
+  color: #ffffff;
 }
 
 .contact-info p {
   font-size: 1.1rem;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 2rem;
 }
 
@@ -709,7 +726,7 @@ body {
   align-items: center;
   gap: 1rem;
   font-size: 1.1rem;
-  color: #000000;
+  color: #ffffff;
   transition: all 0.3s ease;
   padding: 0.5rem;
   border-radius: 8px;
@@ -735,10 +752,10 @@ body {
 
 /* Formulario optimizado */
 .contact-form {
-  background: #ffffff;
+  background: #000000;
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
   border: 2px solid #f97316;
   transition: all 0.3s ease;
   animation: fadeInUp 0.6s ease 0.2s both;
@@ -746,7 +763,7 @@ body {
 
 .contact-form:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.2);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
   border-color: #ea580c;
 }
 
@@ -763,8 +780,8 @@ body {
   font-size: 1rem;
   transition: all 0.3s ease;
   font-family: inherit;
-  background: #ffffff;
-  color: #000000;
+  background: #111111;
+  color: #ffffff;
 }
 
 .form-group input:focus,
@@ -773,6 +790,7 @@ body {
   border-color: #ea580c;
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
   transform: translateY(-1px);
+  background: #000000;
 }
 
 .form-group textarea {
@@ -782,7 +800,7 @@ body {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #000000;
+  color: #cccccc;
   opacity: 0.7;
 }
 
@@ -851,11 +869,11 @@ body {
 .success-message h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #000000;
+  color: #ffffff;
 }
 
 .success-message p {
-  color: #000000;
+  color: #ffffff;
 }
 
 /* Footer optimizado */
