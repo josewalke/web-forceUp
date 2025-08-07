@@ -3,10 +3,17 @@ import React from 'react';
 const Logo = () => {
   return (
     <div className="logo">
-      <h2 className="logo-text">
-        <span className="logo-force">Force</span>
-        <span className="logo-up">Up!</span>
-      </h2>
+      <div className="logo-main">
+        <div className="logo-line-1">
+          <span className="logo-force">Force</span>
+        </div>
+        <div className="logo-line-2">
+          <span className="logo-up">Up!</span>
+        </div>
+      </div>
+      <div className="logo-tagline">
+        <span>Formation & Events</span>
+      </div>
     </div>
   );
 };

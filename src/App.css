@@ -102,68 +102,131 @@ body {
 /* Logo con League Spartan */
 .logo {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.logo-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.logo-line-1 {
+  display: flex;
   align-items: center;
 }
 
-.logo-text {
+.logo-line-2 {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.logo-force {
   font-family: 'League Spartan', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  animation: logoGlow 3s ease-in-out infinite;
-}
-
-.logo-text:hover {
-  transform: scale(1.05);
-  animation: logoGlow 1.5s ease-in-out infinite;
-}
-
-.logo-force {
-  color: #ffffff;
-  position: relative;
+  line-height: 1;
 }
 
 .logo-up {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
   color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
   position: relative;
-  margin-left: 5px;
+}
+
+.logo-up::after {
+  content: '!';
+  color: #ffffff;
+  position: relative;
+  margin-left: 2px;
 }
 
 .logo-up::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -2px;
-  right: -2px;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(249, 115, 22, 0.2), transparent);
-  border-radius: 4px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  top: -2px;
+  right: -8px;
+  width: 6px;
+  height: 6px;
+  background: #f97316;
+  border-radius: 50%;
+  z-index: 1;
 }
 
-.logo-text:hover .logo-up::before {
-  opacity: 1;
+.logo-tagline {
+  margin-top: 0.25rem;
+}
+
+.logo-tagline span {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* Efectos hover */
+.logo:hover .logo-force {
+  animation: logoGlow 1.5s ease-in-out infinite;
+}
+
+.logo:hover .logo-up {
+  animation: logoGlow 1.5s ease-in-out infinite;
+}
+
+.logo:hover .logo-tagline span {
+  color: #ffffff;
+  transition: color 0.3s ease;
 }
 
 /* Responsive para el logo */
 @media (max-width: 768px) {
-  .logo-text {
+  .logo-force {
     font-size: 1.5rem;
     letter-spacing: 1px;
+  }
+  
+  .logo-up {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .logo-tagline span {
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 480px) {
-  .logo-text {
+  .logo-force {
     font-size: 1.2rem;
     letter-spacing: 0.5px;
+  }
+  
+  .logo-up {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .logo-tagline span {
+    font-size: 0.6rem;
+  }
+  
+  .logo-line-2 {
+    margin-left: 0.5rem;
   }
 }
 
