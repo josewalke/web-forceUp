@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
-import Logo from './Logo';
 
 const Header = () => {
   const { t } = useLanguage();
@@ -9,7 +8,13 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <Logo />
+        <div className="logo">
+          <div className="logo-main">
+            <span className="logo-text">Force</span>
+            <span className="logo-text">Up!</span>
+          </div>
+          <div className="logo-tagline">Formation & Events</div>
+        </div>
         <nav className="nav">
           <a href="#inicio">{t('header.nav.inicio')}</a>
           <a href="#servicios">{t('header.nav.servicios')}</a>
