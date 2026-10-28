@@ -15,11 +15,12 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "detect-port": "^2.1.0",
     "terser-webpack-plugin": "^5.3.14",
     "webpack-bundle-analyzer": "^4.10.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "node scripts/start.js",
     "build": "craco build",
     "build:analyze": "ANALYZE=true craco build",
     "test": "craco test",

@@ -5,7 +5,7 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="footer">
+    <footer className="footer" role="contentinfo" aria-label="Pie de página">
       <div className="container">
         <p>{t('footer.copyright')}</p>
       </div>

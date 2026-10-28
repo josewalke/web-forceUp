@@ -37,12 +37,12 @@ const Services = () => {
   ], [t]);
 
   return (
-    <section id="servicios" className="services">
+    <section id="servicios" className="services" aria-labelledby="services-title">
       <div className="container">
-        <h2>{t('services.title')}</h2>
-        <div className="services-grid">
+        <h2 id="services-title">{t('services.title')}</h2>
+        <div className="services-grid" role="list" aria-label="Lista de servicios">
           {servicesData.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+            <ServiceCard key={index} {...service} index={index} />
           ))}
         </div>
       </div>

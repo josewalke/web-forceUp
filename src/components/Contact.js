@@ -8,14 +8,14 @@ const Contact = ({ formData, handleInputChange, handleSubmit, formSubmitted }) =
   const { t } = useLanguage();
 
   return (
-    <section id="contacto" className="contact">
+    <section id="contacto" className="contact" aria-labelledby="contact-title">
       <div className="container">
         <div className="contact-content">
           <div className="contact-info">
-            <h2>{t('contact.title')}</h2>
+            <h2 id="contact-title">{t('contact.title')}</h2>
             <p>{t('contact.subtitle')}</p>
             
-            <div className="contact-details">
+            <div className="contact-details" role="list" aria-label="Información de contacto">
               <ContactItem icon={FiPhone}>
                 {t('contact.contactInfo.phone')}
               </ContactItem>
@@ -28,7 +28,7 @@ const Contact = ({ formData, handleInputChange, handleSubmit, formSubmitted }) =
             </div>
           </div>
 
-          <div className="contact-form">
+          <div className="contact-form" aria-labelledby="contact-form-title">
             <ContactForm
               formData={formData}
               handleInputChange={handleInputChange}

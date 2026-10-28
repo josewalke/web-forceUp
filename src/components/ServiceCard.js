@@ -1,16 +1,24 @@
 import React from 'react';
 
-const ServiceCard = React.memo(({ icon: Icon, title, description, benefits }) => (
-  <div className="service-card">
-    <div className="service-icon">
+const ServiceCard = React.memo(({ icon: Icon, title, description, benefits, index }) => (
+  <div 
+    className="service-card" 
+    role="listitem"
+    aria-labelledby={`service-title-${index}`}
+  >
+    <div className="service-icon" aria-hidden="true">
       <Icon />
     </div>
-    <h3>{title}</h3>
+    <h3 id={`service-title-${index}`}>{title}</h3>
     <p>{description}</p>
-    <div className="service-benefits">
-      {benefits.map((benefit, index) => (
-        <div key={index} className="benefit-item">
-          {benefit.icon}
+    <div className="service-benefits" role="list" aria-label={`Beneficios de ${title}`}>
+      {benefits.map((benefit, benefitIndex) => (
+        <div 
+          key={benefitIndex} 
+          className="benefit-item"
+          role="listitem"
+        >
+          <span aria-hidden="true">{benefit.icon}</span>
           <span>{benefit.text}</span>
         </div>
       ))}

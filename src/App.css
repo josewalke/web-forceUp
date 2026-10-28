@@ -19,6 +19,44 @@ body {
   padding: 0 20px;
 }
 
+/* Accesibilidad - Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators mejorados para accesibilidad */
+*:focus {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* Mejoras de accesibilidad para botones y enlaces */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
 /* Animaciones optimizadas - solo las necesarias */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }

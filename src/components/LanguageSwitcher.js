@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { availableLanguages } from '../locales';
 import { FiGlobe, FiChevronDown } from 'react-icons/fi';
@@ -6,6 +6,8 @@ import { FiGlobe, FiChevronDown } from 'react-icons/fi';
 const LanguageSwitcher = React.memo(() => {
   const { currentLanguage, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const currentLang = useMemo(() => 
     availableLanguages.find(lang => lang.code === currentLanguage) || availableLanguages[0], 
@@ -15,6 +17,7 @@ const LanguageSwitcher = React.memo(() => {
   const handleLanguageChange = useCallback((languageCode) => {
     changeLanguage(languageCode);
     setIsOpen(false);
+    buttonRef.current?.focus();
   }, [changeLanguage]);
 
   const toggleDropdown = useCallback((e) => {
@@ -26,6 +29,13 @@ const LanguageSwitcher = React.memo(() => {
     setIsOpen(false);
   }, []);
 
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Escape') {
+      closeDropdown();
+      buttonRef.current?.focus();
+    }
+  }, [closeDropdown]);
+
   // Cerrar dropdown cuando se hace clic fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -36,9 +46,13 @@ const LanguageSwitcher = React.memo(() => {
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleKeyDown);
+      };
     }
-  }, [isOpen, closeDropdown]);
+  }, [isOpen, closeDropdown, handleKeyDown]);
 
   const languageOptions = useMemo(() => 
     availableLanguages.map(lang => (
@@ -46,6 +60,15 @@ const LanguageSwitcher = React.memo(() => {
         key={lang.code}
         className={`language-option ${lang.code === currentLanguage ? 'active' : ''}`}
         onClick={() => handleLanguageChange(lang.code)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleLanguageChange(lang.code);
+          }
+        }}
+        role="option"
+        aria-selected={lang.code === currentLanguage}
+        tabIndex={0}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -57,7 +80,7 @@ const LanguageSwitcher = React.memo(() => {
           borderBottom: '1px solid rgba(249, 115, 22, 0.3)'
         }}
       >
-        <span className="language-flag">
+        <span className="language-flag" aria-hidden="true">
           {lang.code === 'es' ? '🇪🇸' : '🇺🇸'}
         </span>
         <span className="language-name">{lang.name}</span>
@@ -66,16 +89,35 @@ const LanguageSwitcher = React.memo(() => {
   );
 
   return (
-    <div className="language-switcher">
-      <div className="language-selector" onClick={toggleDropdown}>
-        <FiGlobe className="language-icon" />
+    <div className="language-switcher" ref={dropdownRef}>
+      <div 
+        className="language-selector" 
+        onClick={toggleDropdown}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleDropdown(e);
+          }
+        }}
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-controls="language-dropdown"
+        aria-label="Seleccionar idioma"
+        tabIndex={0}
+        ref={buttonRef}
+      >
+        <FiGlobe className="language-icon" aria-hidden="true" />
         <span className="language-text">{currentLang?.name || 'Español'}</span>
-        <FiChevronDown className={`chevron-icon ${isOpen ? 'rotated' : ''}`} />
+        <FiChevronDown className={`chevron-icon ${isOpen ? 'rotated' : ''}`} aria-hidden="true" />
       </div>
       
       {isOpen && (
         <div 
+          id="language-dropdown"
           className="language-dropdown" 
+          role="listbox"
+          aria-label="Opciones de idioma"
           style={{ 
             position: 'absolute',
             top: 'calc(100% + 5px)',
